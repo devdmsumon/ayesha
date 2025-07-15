@@ -37,6 +37,7 @@ export default async function PostPage({
           alt={post.title}
           width={800}
           height={500}
+          placeholder="blur"
           blurDataURL={post.coverImage?.asset.metadata?.lqip}
           className="rounded-lg mb-6"
         />

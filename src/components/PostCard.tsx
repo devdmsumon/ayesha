@@ -23,8 +23,9 @@ export default function PostCard({ post }: PostCardProps) {
               alt={post.title}
               width={800}
               height={500}
-              blurDataURL={post.coverImage?.asset?.metadata?.lqip}
               className="w-full aspect-[16/10] object-cover"
+              placeholder="blur"
+              blurDataURL={post.coverImage?.asset?.metadata?.lqip}
             />
           </Link>
         )}
