@@ -11,9 +11,7 @@ export async function getAllPosts(options = {}) {
       coverImage {
         asset-> {
           url,
-          metadata {
-            lqip
-          }
+          metadata { lqip }
         }
       },
       category->{
@@ -42,7 +40,8 @@ export const getPostBySlug = async (slug: string, options = {}) => {
       body,
       coverImage {
         asset-> {
-          url
+          url,
+          metadata { lqip }
         }
       },
       author->{
