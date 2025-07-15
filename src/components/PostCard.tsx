@@ -33,7 +33,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="text-sm text-gray-500 mb-1">{post.category?.title}</div>
 
         <Link href={`/posts/${post.slug.current}`}>
-          <h2 className="text-2xl font-semibold text-blue-600 hover:underline">
+          <h2 className="text-2xl font-normal text-deep-black hover:underline">
             {post.title}
           </h2>
         </Link>
