@@ -9,7 +9,7 @@ interface PostCardProps {
 
 export default function PostCard({ post }: PostCardProps) {
   return (
-    <article className="bg-white rounded-md shadow-md overflow-hidden flex flex-col">
+    <article className="bg-white overflow-hidden flex flex-col text-center">
       <div className="post-thumb">
         {post.coverImage && (
           <Link href={`/posts/${post.slug.current}`}>
@@ -29,28 +29,36 @@ export default function PostCard({ post }: PostCardProps) {
         )}
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
-        <div className="text-sm text-gray-500 mb-1">{post.category?.title}</div>
+      <div className="pt-8 pb-14 flex flex-col flex-grow">
+        <div className="text-sm text-theme-ascent">
+          <span className="text-in text-post-meta italic">In </span>
+          {post.category?.title}
+        </div>
 
         <Link href={`/posts/${post.slug.current}`}>
-          <h2 className="text-2xl font-normal text-deep-black hover:underline">
+          <h2 className="text-2xl font-normal text-deep-black my-5">
             {post.title}
           </h2>
         </Link>
 
-        <div className="text-sm text-gray-500 mt-1 mb-2">
-          {new Date(post.publishedAt).toLocaleDateString()} |{" "}
-          {post.author?.name}
+        <div className="text-sm mb-8">
+          <span className="text-post-meta">
+            {new Date(post.publishedAt).toLocaleDateString()}
+          </span>
+          <span className="meta-sep"></span>
+          <span> {post.author?.name}</span>
         </div>
 
-        <p className="text-gray-700 mb-4 line-clamp-3">{post.excerpt}</p>
+        <p className="mb-4 line-clamp-3">{post.excerpt}</p>
 
-        <Link
-          href={`/posts/${post.slug.current}`}
-          className="mt-auto inline-block text-sm text-blue-500 hover:underline"
-        >
-          Continue reading →
-        </Link>
+        <div className="mt-auto flex justify-center">
+          <Link
+            href={`/posts/${post.slug.current}`}
+            className="text-sm text-[#777] border border-solid border-neutral-200 p-[11px]"
+          >
+            Continue reading →
+          </Link>
+        </div>
       </div>
     </article>
   );

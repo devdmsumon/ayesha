@@ -6,7 +6,7 @@ export default async function HomePage() {
   const posts: Post[] = await getAllPosts({ next: { revalidate: 30 } });
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-10">
+    <>
       <h1 className="text-4xl font-bold mb-8">Latest Posts</h1>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -14,6 +14,6 @@ export default async function HomePage() {
           <PostCard key={post._id} post={post} />
         ))}
       </div>
-    </main>
+    </>
   );
 }

@@ -1,20 +1,32 @@
 import { client } from "../client"; // Update path if needed
 
 export async function getAllPosts(options = {}) {
-  const query = `*[_type == "post"] | order(publishedAt desc) {
-    _id,
-    title,
-    slug,
-    excerpt,
-    publishedAt,
-    "author": author->name,
-    "category": category->title,
-    coverImage {
-      asset->{
-        url
+  const query = `*[_type == "post"] | order(publishedAt desc){
+      _id,
+      title,
+      slug,
+      publishedAt,
+      excerpt,
+      isFeatured,
+      coverImage {
+        asset-> {
+          url
+        }
+      },
+      category->{
+        title,
+        description
+      },
+      author->{
+        name,
+        image {
+          asset->{
+            url
+          }
+        },
+        bio
       }
-    }
-  }`;
+    }`;
 
   return await client.fetch(query, {}, options);
 }
