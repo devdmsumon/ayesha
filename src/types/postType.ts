@@ -5,6 +5,9 @@ import { PortableTextBlock } from "next-sanity";
 export interface ImageAsset {
   asset: {
     url: string;
+    metadata?: {
+      lqip?: string;
+    };
   };
   alt?: string;
 }

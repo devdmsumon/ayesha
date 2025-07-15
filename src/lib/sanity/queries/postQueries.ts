@@ -10,7 +10,10 @@ export async function getAllPosts(options = {}) {
       isFeatured,
       coverImage {
         asset-> {
-          url
+          url,
+          metadata {
+            lqip
+          }
         }
       },
       category->{
