@@ -31,21 +31,27 @@ export default function PostCard({ post }: PostCardProps) {
 
       <div className="pt-8 pb-14 flex flex-col flex-grow">
         <div className="text-sm text-theme-ascent">
-          <span className="text-in text-post-meta italic">In </span>
+          <span className="text-in text-post-meta italic">In</span>
+          <span className="meta-sep inline-block px-1"></span>
           {post.category?.title}
         </div>
 
         <Link href={`/posts/${post.slug.current}`}>
-          <h2 className="text-2xl font-normal text-deep-black my-5">
+          <h2 className="text-2xl font-normal text-deep-black my-5 transition-all duration-250 ease-in-out hover:opacity-50">
             {post.title}
           </h2>
         </Link>
 
         <div className="text-sm mb-8">
           <span className="text-post-meta">
-            {new Date(post.publishedAt).toLocaleDateString()}
+            {new Date(post.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </span>
-          <span className="meta-sep"></span>
+          <span className="meta-sep inline-block px-1 align-middle">·</span>
+
           <span> {post.author?.name}</span>
         </div>
 
@@ -54,7 +60,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="mt-auto flex justify-center">
           <Link
             href={`/posts/${post.slug.current}`}
-            className="text-sm text-[#777] border border-solid border-neutral-200 p-[11px]"
+            className="text-sm text-[#777] border border-solid border-neutral-200 p-[11px] transition-all duration-250 ease-in-out hover:bg-deep-black hover:text-white"
           >
             Continue reading →
           </Link>
